@@ -22,4 +22,3 @@ struct modint {/*{{{*/
   friend ostream& operator<<(ostream& os, const modint& self) { return os << raw(self); }
   explicit operator bool() const { return v != 0; }
 };/*}}}*/
-
