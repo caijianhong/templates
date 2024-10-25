@@ -4,7 +4,7 @@ struct modint {/*{{{*/
   unsigned v;
   modint() = default;
   template <class T, enable_if_t<is_integral<T>::value, int> = 0>
-    modint(const T& y) : v(y % mod + (is_signed<T>() && y < 0 ? mod : 0)) {}
+    modint(const T& y) : v((unsigned)(y % mod + (is_signed<T>() && y < 0 ? mod : 0))) {}
   modint& operator+=(const modint& rhs) { v += rhs.v; if (v >= umod) v -= umod; return *this; }
   modint& operator-=(const modint& rhs) { v -= rhs.v; if (v >= umod) v += umod; return *this; }
   modint& operator*=(const modint& rhs) { v = (unsigned)(1ull * v * rhs.v % umod); return *this; }
